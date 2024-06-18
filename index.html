@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Nivel de Dominadas con el Balón</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+        .calculator h2 {
+            margin-bottom: 20px;
+        }
+        .calculator p, .calculator ol {
+            text-align: left;
+        }
+        .calculator input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .calculator button {
+            padding: 10px;
+            width: 100%;
+            background: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculator button:hover {
+            background: #0056b3;
+        }
+        .calculator .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h2>Calculadora de Nivel de Dominadas con el Balón</h2>
+        <p>Para calcular tu nivel en función de las dominadas:</p>
+        <ol>
+            <li>Realiza tantas dominadas con el balón como puedas sin que toque el suelo.</li>
+            <li>Cuenta el número total de dominadas realizadas.</li>
+        </ol>
+        <label for="juggles">Número de dominadas:</label>
+        <input type="number" id="juggles" placeholder="Ingresa el número de dominadas">
+        <button onclick="calculateJugglingLevel()">Calcular Nivel</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateJugglingLevel() {
+            const juggles = document.getElementById('juggles').value;
+            let resultText;
+
+            if (!isNaN(juggles) && juggles > 0) {
+                if (juggles < 10) {
+                    resultText = `Has realizado ${juggles} dominadas. Esto te coloca en el nivel: Principiante. ¡Sigue practicando!`;
+                } else if (juggles >= 10 && juggles < 30) {
+                    resultText = `Has realizado ${juggles} dominadas. Esto te coloca en el nivel: Intermedio. ¡Buen trabajo!`;
+                } else if (juggles >= 30 && juggles < 50) {
+                    resultText = `Has realizado ${juggles} dominadas. Esto te coloca en el nivel: Avanzado. ¡Impresionante!`;
+                } else {
+                    resultText = `Has realizado ${juggles} dominadas. Esto te coloca en el nivel: Experto. ¡Eres un maestro del balón!`;
+                }
+            } else {
+                resultText = `Por favor, ingresa un número válido de dominadas.`;
+            }
+
+            document.getElementById('result').innerText = resultText;
+        }
+    </script>
+
+</body>
+</html>
